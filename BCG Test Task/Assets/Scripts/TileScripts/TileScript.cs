@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TileScript : MonoBehaviour
@@ -9,27 +7,51 @@ public class TileScript : MonoBehaviour
 
     private int _localDepth;
     [SerializeField] private GameObject _goldInglot;
-    private bool _goldInglotOn;
+    private InglotScript _goldInglotScript;
+    
+    private GameObject _manager;
+    private GameManager _gameManager;
 
     private SpriteRenderer _spriteRenderer;
 
     void Start()
     {
-        _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        _localDepth = _defaultDepth;
-        _goldInglotOn = true;
-        SetGold(true);
+        Initialization();
     }
+    private void Initialization(){
+        _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        _goldInglotScript = _goldInglot.GetComponent<InglotScript>();
+        _manager = GameObject.FindGameObjectWithTag("Manager");
+        _gameManager = _manager.GetComponent<GameManager>();
+        _localDepth = _defaultDepth;
+        SolveGoldCondition();
+    }
+
+    private int _goldLevel;
+    private bool _willBeGoldInglot;
+    //Будет ли золото в клетке, если да, то на какой глубине
+    private void SolveGoldCondition(){
+        bool WillBeGold(float a, float b) => a < b ? true : false;
+        _willBeGoldInglot = WillBeGold(Random.Range(0f,1f), _goldProbability);
+        if(_willBeGoldInglot){
+            _goldLevel = Random.Range(1, _defaultDepth);
+        }
+    }
+
     void OnMouseDown()
     {
-        if(_localDepth > 0){
+        if(_localDepth > 0 && !_goldInglotScript.IsActive()){
             _localDepth--;
+            _gameManager.DecreaseShovels();
             SetOpacity((float)_localDepth/_defaultDepth);
+            if(_localDepth == _goldLevel){
+                SetGold(true);
+                _goldInglotScript.SetGameManager(_gameManager);
+            }
         }
-        else{
+        if(_localDepth == 0){
             SetOpacity(0.01f);
-            SetGold(false);
-        }      
+        }  
     }
 
 

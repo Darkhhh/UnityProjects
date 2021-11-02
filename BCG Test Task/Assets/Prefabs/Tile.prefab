@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5028918462434781803}
   - component: {fileID: 2324610124862869589}
+  - component: {fileID: 6319921630479140602}
+  - component: {fileID: 1701518109619746614}
   m_Layer: 0
   m_Name: GoldInglot
   m_TagString: Untagged
@@ -82,6 +84,44 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &6319921630479140602
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494096356893132151}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &1701518109619746614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494096356893132151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03daafdb19c110841a3ffaa451dfb5c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6564412997474370431
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 343898ead20214e4281cb7cbc5a5b4c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _defaultDepth: 5
+  _defaultDepth: 3
   _goldProbability: 0.783
   _goldInglot: {fileID: 494096356893132151}
 --- !u!61 &9214820975207576885
