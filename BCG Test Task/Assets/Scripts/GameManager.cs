@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int _goldAmount;  
     
     void Awake(){
-        SetActiveEndPanel(false);
+        SetActiveEndPanel(false, "");
         _uiManager.SetShovelText(_shovelAmount.ToString());
         _uiManager.SetGoldText(_goldAmount.ToString());
     }
@@ -17,19 +17,18 @@ public class GameManager : MonoBehaviour
         _shovelAmount--;
         _uiManager.SetShovelText(_shovelAmount.ToString());
         if(_shovelAmount < 1){
-            SetActiveEndPanel(true);
-            _uiManager.SetEndGamePanelText("Поражение");
+            SetActiveEndPanel(true,"Поражение");
         }
     }
     public void DecreaseGold(){
         _goldAmount--;
         _uiManager.SetGoldText(_goldAmount.ToString());
         if(_goldAmount < 1){
-            SetActiveEndPanel(true);
-            _uiManager.SetEndGamePanelText("Победа!");
+            SetActiveEndPanel(true, "Победа!");
         }
     }
-    private void SetActiveEndPanel(bool value){
+    private void SetActiveEndPanel(bool value, string endPanelText){
         _endGamePanel.SetActive(value);
+        _uiManager.SetEndGamePanelText(endPanelText);
     }
 }

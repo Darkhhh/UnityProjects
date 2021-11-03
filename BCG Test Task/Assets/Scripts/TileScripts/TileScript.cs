@@ -28,12 +28,9 @@ public class TileScript : MonoBehaviour
     }
 
     private int _goldLevel;
-    private bool _willBeGoldInglot;
-    //Будет ли золото в клетке, если да, то на какой глубине
     private void SolveGoldCondition(){
         bool WillBeGold(float a, float b) => a < b ? true : false;
-        _willBeGoldInglot = WillBeGold(Random.Range(0f,1f), _goldProbability);
-        if(_willBeGoldInglot){
+        if(WillBeGold(Random.Range(0f,1f), _goldProbability)){
             _goldLevel = Random.Range(1, _defaultDepth);
         }
     }
@@ -41,22 +38,24 @@ public class TileScript : MonoBehaviour
     void OnMouseDown()
     {
         if(_localDepth > 0 && !_goldInglotScript.IsActive()){
-            _localDepth--;
-            _gameManager.DecreaseShovels();
-            SetOpacity((float)_localDepth/_defaultDepth);
-            if(_localDepth == _goldLevel){
-                SetGold(true);
-                _goldInglotScript.SetGameManager(_gameManager);
-            }
+            Digging();
         }
         if(_localDepth == 0){
             SetOpacity(0.01f);
         }  
     }
-
+    private void Digging(){
+        _localDepth--;
+         _gameManager.DecreaseShovels();
+        SetOpacity((float)_localDepth/_defaultDepth);
+        if(_localDepth == _goldLevel){
+            SetGold(true);           
+        }
+    }
 
     private void SetGold(bool value){
         _goldInglot.SetActive(value);
+        _goldInglotScript.SetGameManager(_gameManager);
     }
     private void SetOpacity(float value){
         _spriteRenderer.color = new Color(1f, 1f, 1f, value);
