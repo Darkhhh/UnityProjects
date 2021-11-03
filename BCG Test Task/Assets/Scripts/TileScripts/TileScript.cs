@@ -24,6 +24,7 @@ public class TileScript : MonoBehaviour
         _manager = GameObject.FindGameObjectWithTag("Manager");
         _gameManager = _manager.GetComponent<GameManager>();
         _localDepth = _defaultDepth;
+        _goldLevel = -1;
         SolveGoldCondition();
     }
 

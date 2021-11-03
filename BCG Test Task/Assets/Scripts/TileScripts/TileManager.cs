@@ -22,7 +22,7 @@ public class TileManager : MonoBehaviour
         }
     }
     private void CreateTile(Vector3 position){
-        Object spaceShip = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Tile.prefab", typeof(GameObject));
-        GameObject clone = Instantiate(spaceShip, position, Quaternion.identity) as GameObject;
+        Object tile = AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Tile.prefab", typeof(GameObject));
+        GameObject clone = Instantiate(tile, position, Quaternion.identity) as GameObject;
     }   
 }
