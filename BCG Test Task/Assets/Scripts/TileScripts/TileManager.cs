@@ -10,7 +10,7 @@ public class TileManager : MonoBehaviour
         CreateTiles();
     }
     private void CreateTiles(){
-        float startValue = _tilesInRow / 2 - 0.5f;
+        float startValue = _tilesInRow / 2 - 0.5f * ((_tilesInRow + 1) % 2);
         float currentX = -startValue, currentY = startValue;
         for(int i = 0; i < _tilesInRow; i++){
             for(int j = 0; j< _tilesInRow; j++){

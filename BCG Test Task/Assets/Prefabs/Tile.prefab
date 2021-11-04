@@ -220,7 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _defaultDepth: 3
-  _goldProbability: 0.076
+  _goldProbability: 0.733
   _goldInglot: {fileID: 494096356893132151}
 --- !u!61 &9214820975207576885
 BoxCollider2D:
